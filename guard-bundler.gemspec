@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler', '~> 1.0.2'
   s.add_development_dependency 'rspec',   '~> 2.0.1'
-  s.add_development_dependency 'mocha',   '~> 0.9.8'
 
   s.files        = Dir.glob('{lib}/**/*') + %w[LICENSE README.rdoc]
   s.require_path = 'lib'
