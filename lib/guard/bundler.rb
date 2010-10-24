@@ -8,7 +8,8 @@ module Guard
     autoload :Notifier, 'guard/bundler/notifier'
 
     def start
-      refresh_bundle
+      return refresh_bundle if bundle_need_refresh?
+      true
     end
 
     def reload
