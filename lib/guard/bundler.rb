@@ -26,7 +26,7 @@ module Guard
     end
 
     def refresh_bundle
-      UI.info 'Refresh bundle'
+      UI.info 'Refresh bundle', :reset => true
       system('bundle install')
     end
 
