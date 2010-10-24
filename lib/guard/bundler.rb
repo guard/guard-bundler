@@ -5,6 +5,8 @@ require 'guard/guard'
 module Guard
   class Bundler < Guard
 
+    autoload :Notifier, 'guard/bundler/notifier'
+
     def start
       refresh_bundle
     end
