@@ -5,8 +5,11 @@ require 'guard/guard'
 module Guard
   class Bundler < Guard
 
+    autoload :Notifier, 'guard/bundler/notifier'
+
     def start
-      refresh_bundle
+      return refresh_bundle if bundle_need_refresh?
+      true
     end
 
     def reload
@@ -26,7 +29,7 @@ module Guard
     end
 
     def refresh_bundle
-      UI.info 'Refresh bundle'
+      UI.info 'Refresh bundle', :reset => true
       system('bundle install')
     end
 
