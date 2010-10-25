@@ -30,6 +30,8 @@ Please read {guard usage doc}[http://github.com/guard/guard#readme]
 Bundler guard can be really be adapated to all kind of projects.
 Please read {guard doc}[http://github.com/guard/guard#readme] for more info about Guardfile DSL.
 
+Attention place bundler guard before other is recommended.
+
 === Standard ruby gems
 
     guard 'bundler' do
