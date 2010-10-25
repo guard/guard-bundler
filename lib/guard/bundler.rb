@@ -7,6 +7,12 @@ module Guard
 
     autoload :Notifier, 'guard/bundler/notifier'
 
+    def initialize(watchers = [], options = {})
+      super
+
+      @notify = options[:notify].nil? ? true : options[:notify]
+    end
+ 
     def start
       return refresh_bundle if bundle_need_refresh?
       true
@@ -21,6 +27,10 @@ module Guard
       true
     end
 
+    def notify?
+      !!@notify
+    end
+
     private
 
     def bundle_need_refresh?
@@ -32,7 +42,7 @@ module Guard
       UI.info 'Refresh bundle', :reset => true
       start_at = Time.now
       result = system('bundle install')
-      Notifier::notify(true, Time.now - start_at)
+      Notifier::notify(true, Time.now - start_at) if notify?
       result
     end
 

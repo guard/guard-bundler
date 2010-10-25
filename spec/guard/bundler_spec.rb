@@ -4,6 +4,23 @@ require 'spec_helper'
 describe Guard::Bundler do
   subject { Guard::Bundler.new }
 
+  describe 'options' do
+
+    context 'notify' do
+
+      it 'should be true by default' do
+        subject.should be_notify
+      end
+
+      it 'should be set to false' do
+        subject = Guard::Bundler.new([], {:notify => false})
+        subject.should_not be_notify
+      end
+
+    end
+
+  end
+
   context 'start' do
 
     it 'should call `bundle check\' command' do
@@ -83,6 +100,13 @@ describe Guard::Bundler do
   it 'should call notifier after `bundle install\' command fail' do
     subject.should_receive(:system).with('bundle install').and_return(false)
     Guard::Bundler::Notifier.should_receive(:notify).with(true, anything())
+    subject.send(:refresh_bundle)
+  end
+
+  it 'should not call notifier id notify option is set to false' do
+    subject.stub(:notify?).and_return(false)
+    subject.should_receive(:system).with('bundle install').and_return(true)
+    Guard::Bundler::Notifier.should_not_receive(:notify)
     subject.send(:refresh_bundle)
   end
 

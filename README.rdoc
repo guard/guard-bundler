@@ -38,6 +38,14 @@ Please read {guard doc}[http://github.com/guard/guard#readme] for more info abou
       # watch('^.+\.gemspec')
     end
 
+== Options
+
+You can disable desktop notification with:
+
+    guard 'bundler', :notify => false do
+      ...
+    end
+
 == Development
 
 - Source hosted at {GitHub}[http://github.com/guard/guard-bundler]
