@@ -74,4 +74,16 @@ describe Guard::Bundler do
 
   end
 
+  it 'should call notifier after `bundle install\' command success' do
+    subject.should_receive(:system).with('bundle install').and_return(true)
+    Guard::Bundler::Notifier.should_receive(:notify).with(true, anything())
+    subject.send(:refresh_bundle)
+  end
+
+  it 'should call notifier after `bundle install\' command fail' do
+    subject.should_receive(:system).with('bundle install').and_return(false)
+    Guard::Bundler::Notifier.should_receive(:notify).with(true, anything())
+    subject.send(:refresh_bundle)
+  end
+
 end

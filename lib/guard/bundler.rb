@@ -30,7 +30,10 @@ module Guard
 
     def refresh_bundle
       UI.info 'Refresh bundle', :reset => true
-      system('bundle install')
+      start_at = Time.now
+      result = system('bundle install')
+      Notifier::notify(true, Time.now - start_at)
+      result
     end
 
   end

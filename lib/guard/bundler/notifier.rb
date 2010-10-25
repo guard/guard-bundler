@@ -8,7 +8,7 @@ module Guard
         if result
           message << "Bundle has been updated\nin %.1f seconds." % [duration]
         else
-          message << 'Bundle can\t be updated,\nplease check manually.'
+          message << "Bundle can't be updated,\nplease check manually."
         end
         message
       end
