@@ -10,11 +10,15 @@ module Guard
     def initialize(watchers = [], options = {})
       super
 
-      @notify = options[:notify].nil? ? true : options[:notify]
+      options[:notify] = true if options[:notify].nil?
     end
  
     def start
       return refresh_bundle if bundle_need_refresh?
+      true
+    end
+
+    def stop
       true
     end
 
@@ -27,11 +31,11 @@ module Guard
       true
     end
 
-    def notify?
-      !!@notify
-    end
-
     private
+
+    def notify?
+      !!options[:notify]
+    end
 
     def bundle_need_refresh?
       `bundle check`

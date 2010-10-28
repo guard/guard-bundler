@@ -14,7 +14,7 @@ describe Guard::Bundler do
 
       it 'should be set to false' do
         subject = Guard::Bundler.new([], {:notify => false})
-        subject.should_not be_notify
+        subject.options[:notify].should be_false
       end
 
     end
@@ -59,6 +59,14 @@ describe Guard::Bundler do
     it 'should return false if `bundle install\' command fail' do
       subject.should_receive(:system).with('bundle install').and_return(false)
       subject.reload.should be_false
+    end
+
+  end
+
+  context 'run_all' do
+
+    it 'should return true' do
+      subject.run_all.should be_true
     end
 
   end
