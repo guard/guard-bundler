@@ -40,6 +40,7 @@ module Guard
         Notifier::notify(@result, Time.now - start_at) if notify?
         @result
       else
+        UI.info 'Bundle already up-to-date', :reset => true
         Notifier::notify('up-to-date', nil) if notify?
         true
       end
