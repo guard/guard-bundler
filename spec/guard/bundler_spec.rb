@@ -14,7 +14,7 @@ describe Guard::Bundler do
 
       it 'should be set to false' do
         subject = Guard::Bundler.new([], {:notify => false})
-        subject.should_not be_notify
+        subject.options[:notify].should be_false
       end
 
     end
@@ -52,13 +52,23 @@ describe Guard::Bundler do
   context 'reload' do
 
     it 'should call `bundle install\' command' do
+      subject.should_receive(:bundle_need_refresh?).and_return(true)
       subject.should_receive(:system).with('bundle install').and_return(true)
       subject.reload.should be_true
     end
 
     it 'should return false if `bundle install\' command fail' do
+      subject.should_receive(:bundle_need_refresh?).and_return(true)
       subject.should_receive(:system).with('bundle install').and_return(false)
       subject.reload.should be_false
+    end
+
+  end
+
+  context 'run_all' do
+
+    it 'should return true' do
+      subject.run_all.should be_true
     end
 
   end
@@ -92,18 +102,27 @@ describe Guard::Bundler do
   end
 
   it 'should call notifier after `bundle install\' command success' do
+    subject.should_receive(:bundle_need_refresh?).and_return(true)
     subject.should_receive(:system).with('bundle install').and_return(true)
     Guard::Bundler::Notifier.should_receive(:notify).with(true, anything())
     subject.send(:refresh_bundle)
   end
 
   it 'should call notifier after `bundle install\' command fail' do
+    subject.should_receive(:bundle_need_refresh?).and_return(true)
     subject.should_receive(:system).with('bundle install').and_return(false)
-    Guard::Bundler::Notifier.should_receive(:notify).with(true, anything())
+    Guard::Bundler::Notifier.should_receive(:notify).with(false, anything())
+    subject.send(:refresh_bundle)
+  end
+
+  it 'should call notifier if bundle do not need refresh' do
+    subject.should_receive(:bundle_need_refresh?).and_return(false)
+    Guard::Bundler::Notifier.should_receive(:notify).with('up-to-date', anything())
     subject.send(:refresh_bundle)
   end
 
   it 'should not call notifier id notify option is set to false' do
+    subject.should_receive(:bundle_need_refresh?).and_return(true)
     subject.stub(:notify?).and_return(false)
     subject.should_receive(:system).with('bundle install').and_return(true)
     Guard::Bundler::Notifier.should_not_receive(:notify)

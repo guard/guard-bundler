@@ -7,7 +7,7 @@ Bundler guard allows to automatically & intelligently install/update bundle when
 
 == Install
 
-Please be sure to have {guard}[http://github.com/guard/guard] installed before continue.
+Please be sure to have {Guard}[https://github.com/guard/guard] installed before continue.
 
 Install the gem:
 
@@ -23,21 +23,19 @@ Add guard definition to your Guardfile by running this command:
 
 == Usage
 
-Please read {guard usage doc}[http://github.com/guard/guard#readme]
+Please read {Guard usage doc}[https://github.com/guard/guard#readme]
 
 == Guardfile
 
-Bundler guard can be really be adapated to all kind of projects.
-Please read {guard doc}[http://github.com/guard/guard#readme] for more info about Guardfile DSL.
-
-Attention place bundler guard before other is recommended.
+Bundler guard can be really be adapted to all kind of projects.
+Advice: place Bundler guard before other is recommended.
 
 === Standard ruby gems
 
     guard 'bundler' do
-      watch('^Gemfile')
+      watch('Gemfile')
       # Uncomment next line if Gemfile contain `gemspec' command
-      # watch('^.+\.gemspec')
+      # watch(/^.+\.gemspec/)
     end
 
 == Options
@@ -48,14 +46,16 @@ You can disable desktop notification with:
       ...
     end
 
+Please read {Guard doc}[https://github.com/guard/guard#readme] for more info about Guardfile DSL.
+
 == Development
 
-- Source hosted at {GitHub}[http://github.com/guard/guard-bundler]
-- Report issues/Questions/Feature requests on {GitHub Issues}[http://github.com/guard/guard-bundler/issues]
+- Source hosted at {GitHub}[https://github.com/guard/guard-bundler]
+- Report issues/Questions/Feature requests on {GitHub Issues}[https://github.com/guard/guard-bundler/issues]
 
 Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
 you make.
 
 == Authors
 
-{Yann Lugrin}[http://github.com/yannlugrin]
+{Yann Lugrin}[https://github.com/yannlugrin]

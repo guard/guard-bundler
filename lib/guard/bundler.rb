@@ -1,21 +1,20 @@
 # encoding: utf-8
 require 'guard'
 require 'guard/guard'
+require 'bundler'
 
 module Guard
   class Bundler < Guard
-
     autoload :Notifier, 'guard/bundler/notifier'
 
     def initialize(watchers = [], options = {})
       super
 
-      @notify = options[:notify].nil? ? true : options[:notify]
+      options[:notify] = true if options[:notify].nil?
     end
- 
+
     def start
-      return refresh_bundle if bundle_need_refresh?
-      true
+      refresh_bundle
     end
 
     def reload
@@ -23,27 +22,36 @@ module Guard
     end
 
     def run_on_change(paths = [])
-      return refresh_bundle if bundle_need_refresh?
-      true
-    end
-
-    def notify?
-      !!@notify
+      refresh_bundle
     end
 
     private
 
-    def bundle_need_refresh?
-      `bundle check`
-      $? == 0 ? false : true
+    def notify?
+      !!options[:notify]
     end
 
     def refresh_bundle
-      UI.info 'Refresh bundle', :reset => true
-      start_at = Time.now
-      result = system('bundle install')
-      Notifier::notify(true, Time.now - start_at) if notify?
-      result
+      if bundle_need_refresh?
+        UI.info 'Refresh bundle', :reset => true
+        start_at = Time.now
+        ::Bundler.with_clean_env do
+          @result = system('bundle install')
+        end
+        Notifier::notify(@result, Time.now - start_at) if notify?
+        @result
+      else
+        UI.info 'Bundle already up-to-date', :reset => true
+        Notifier::notify('up-to-date', nil) if notify?
+        true
+      end
+    end
+
+    def bundle_need_refresh?
+      ::Bundler.with_clean_env do
+        `bundle check`
+      end
+      $? == 0 ? false : true
     end
 
   end

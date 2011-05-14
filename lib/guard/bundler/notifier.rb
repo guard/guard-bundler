@@ -4,13 +4,14 @@ module Guard
     class Notifier
 
       def self.guard_message(result, duration)
-        message = ''
-        if result
-          message << "Bundle has been updated\nin %.1f seconds." % [duration]
+        case result
+        when 'up-to-date'
+          "Bundle already up-to-date"
+        when true
+          "Bundle has been updated\nin %.1f seconds." % [duration]
         else
-          message << "Bundle can't be updated,\nplease check manually."
+          "Bundle can't be updated,\nplease check manually."
         end
-        message
       end
 
       # failed | success
