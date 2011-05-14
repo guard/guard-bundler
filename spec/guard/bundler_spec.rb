@@ -25,6 +25,7 @@ describe Guard::Bundler do
 
     it 'should call `bundle check\' command' do
       subject.should_receive(:`).with('bundle check')
+      subject.should_receive(:system).with('bundle install')
       subject.start
     end
 
@@ -76,6 +77,7 @@ describe Guard::Bundler do
 
     it 'should call `bundle check\' command' do
       subject.should_receive(:`).with('bundle check')
+      subject.should_receive(:system).with('bundle install')
       subject.run_on_change
     end
 
