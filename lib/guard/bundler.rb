@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'guard'
 require 'guard/guard'
+require 'bundler'
 
 module Guard
   class Bundler < Guard
