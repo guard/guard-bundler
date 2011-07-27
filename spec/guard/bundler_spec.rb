@@ -19,6 +19,19 @@ describe Guard::Bundler do
 
     end
 
+    context 'binstubs' do
+
+      it 'should be false by default' do
+        subject.should_not be_binstubs
+      end
+
+      it 'should be set to true' do
+        subject = Guard::Bundler.new([], {:binstubs => true})
+        subject.options[:binstubs].should be_true
+      end
+
+    end
+
   end
 
   context 'start' do

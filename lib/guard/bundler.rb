@@ -31,6 +31,10 @@ module Guard
       !!options[:notify]
     end
 
+    def binstubs?
+      !!options[:binstubs]
+    end
+
     def refresh_bundle
       if bundle_need_refresh?
         UI.info 'Refresh bundle', :reset => true
