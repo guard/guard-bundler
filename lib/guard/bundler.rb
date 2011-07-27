@@ -36,7 +36,7 @@ module Guard
         UI.info 'Refresh bundle', :reset => true
         start_at = Time.now
         ::Bundler.with_clean_env do
-          @result = system('bundle install')
+          @result = system("bundle install#{' --binstubs' if options[:binstubs]}")
         end
         Notifier::notify(@result, Time.now - start_at) if notify?
         @result

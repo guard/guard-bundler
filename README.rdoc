@@ -46,6 +46,13 @@ You can disable desktop notification with:
       ...
     end
 
+You can enable the {--binstubs flag}[http://gembundler.com/man/bundle-exec.1.html] as in 'bundle install --binstubs' with:
+
+    guard 'bundler', :binstubs => true do
+      ...
+    end
+
+
 Please read {Guard doc}[https://github.com/guard/guard#readme] for more info about Guardfile DSL.
 
 == Development
