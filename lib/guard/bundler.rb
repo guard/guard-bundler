@@ -31,8 +31,8 @@ module Guard
       !!options[:notify]
     end
 
-    def binstubs?
-      !!options[:binstubs]
+    def cli?
+      !!options[:cli]
     end
 
     def refresh_bundle
@@ -40,7 +40,7 @@ module Guard
         UI.info 'Refresh bundle', :reset => true
         start_at = Time.now
         ::Bundler.with_clean_env do
-          @result = system("bundle install#{' --binstubs' if options[:binstubs]}")
+          @result = system("bundle install#{" #{options[:cli]}" if options[:cli]}")
         end
         Notifier::notify(@result, Time.now - start_at) if notify?
         @result
