@@ -46,7 +46,7 @@ You can disable desktop notification with:
       ...
     end
 
-You can enable the {--cli flag} to pass arbitrary command line options. Eg.:
+You can pass arbitrary command line options. Eg.:
 
     guard 'bundler', :cli => '--binstubs' do
       ...
