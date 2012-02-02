@@ -19,6 +19,19 @@ describe Guard::Bundler do
 
     end
 
+    context 'arbitrary cli switches' do
+
+      it 'should be false by default' do
+        subject.should_not be_cli
+      end
+
+      it 'should be set to true' do
+        subject = Guard::Bundler.new([], {:cli => '--binstubs'})
+        subject.options[:cli].should be_true
+      end
+
+    end
+
   end
 
   context 'start' do

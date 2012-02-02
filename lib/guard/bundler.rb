@@ -31,12 +31,16 @@ module Guard
       !!options[:notify]
     end
 
+    def cli?
+      !!options[:cli]
+    end
+
     def refresh_bundle
       if bundle_need_refresh?
         UI.info 'Refresh bundle', :reset => true
         start_at = Time.now
         ::Bundler.with_clean_env do
-          @result = system('bundle install')
+          @result = system("bundle install#{" #{options[:cli]}" if options[:cli]}")
         end
         Notifier::notify(@result, Time.now - start_at) if notify?
         @result

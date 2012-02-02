@@ -46,6 +46,13 @@ You can disable desktop notification with:
       ...
     end
 
+You can pass arbitrary command line options. Eg.:
+
+    guard 'bundler', :cli => '--binstubs' do
+      ...
+    end
+
+
 Please read {Guard doc}[https://github.com/guard/guard#readme] for more info about Guardfile DSL.
 
 == Development
