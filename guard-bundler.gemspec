@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'bundler', '>= 1.0.0'
 
   s.add_development_dependency 'rspec',       '~> 2.6.0'
-  s.add_development_dependency 'guard-rspec', '~> 0.3.1'
+  s.add_development_dependency 'guard-rspec', '~> 0.4.0'
 
   s.files        = Dir.glob('{lib}/**/*') + %w[LICENSE README.rdoc]
   s.require_path = 'lib'
