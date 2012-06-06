@@ -78,14 +78,6 @@ describe Guard::Bundler do
 
   end
 
-  context 'run_all' do
-
-    it 'should return true' do
-      subject.run_all.should be_nil
-    end
-
-  end
-
   context 'run_on_changes' do
 
     it 'should call `bundle check\' command' do
