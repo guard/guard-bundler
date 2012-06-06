@@ -21,7 +21,7 @@ module Guard
       refresh_bundle
     end
 
-    def run_on_change(paths = [])
+    def run_on_changes(paths = [])
       refresh_bundle
     end
 
