@@ -49,7 +49,7 @@ end
 
 Please read [Guard doc](https://github.com/guard/guard#readme) for more information about the Guardfile DSL.
 
-== Development
+## Development
 
 * Source hosted at [GitHub](https://github.com/guard/guard-bundler)
 * Report issues/Questions/Feature requests on [GitHub Issues](https://github.com/guard/guard-bundler/issues)
@@ -57,6 +57,6 @@ Please read [Guard doc](https://github.com/guard/guard#readme) for more informat
 Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
 you make.
 
-== Authors
+## Authors
 
-{Yann Lugrin}[https://github.com/yannlugrin]
+[Yann Lugrin](https://github.com/yannlugrin)
