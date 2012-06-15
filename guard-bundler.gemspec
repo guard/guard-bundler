@@ -15,14 +15,15 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project         = 'guard-bundler'
 
-  s.add_dependency 'guard',   '>= 0.2.2'
-  s.add_dependency 'bundler', '>= 1.0.0'
+  s.add_dependency 'guard',   '~> 1.1'
+  s.add_dependency 'bundler', '~> 1.0'
 
-  s.add_development_dependency 'rspec',       '~> 2.6.0'
-  s.add_development_dependency 'guard-rspec', '~> 0.4.0'
+  s.add_development_dependency 'rspec',       '~> 2.6'
+  s.add_development_dependency 'guard-rspec', '~> 1.0'
 
   s.files        = Dir.glob('{lib}/**/*') + %w[LICENSE README.rdoc]
   s.require_path = 'lib'
 
   s.rdoc_options = ["--charset=UTF-8", "--main=README.rdoc", "--exclude='(lib|test|spec)|(Gem|Guard|Rake)file'"]
 end
+
