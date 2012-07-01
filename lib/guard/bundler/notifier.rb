@@ -8,9 +8,9 @@ module Guard
         when 'up-to-date'
           "Bundle already up-to-date"
         when true
-          "Bundle has been updated\nin %.1f seconds." % [duration]
+          "Bundle has been installed\nin %.1f seconds." % [duration]
         else
-          "Bundle can't be updated,\nplease check manually."
+          "Bundle can't be installed,\nplease check manually."
         end
       end
 
@@ -27,7 +27,7 @@ module Guard
         message = guard_message(result, duration)
         image   = guard_image(result)
 
-        ::Guard::Notifier.notify(message, :title => 'Bundle update', :image => image)
+        ::Guard::Notifier.notify(message, :title => 'bundle install', :image => image)
       end
 
     end
