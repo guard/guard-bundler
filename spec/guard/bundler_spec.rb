@@ -62,7 +62,7 @@ describe Guard::Bundler do
 
     it 'should call notifier if bundle do not need refresh' do
       subject.stub!(:bundle_need_refresh?).and_return(false)
-      Guard::Bundler::Notifier.should_receive(:notify).with('up-to-date', anything())
+      Guard::Bundler::Notifier.should_not_receive(:notify).with('up-to-date', anything())
       subject.send(:refresh_bundle)
     end
 
