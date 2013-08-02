@@ -47,21 +47,21 @@ describe Guard::Bundler do
     end
 
     it 'should call notifier after `bundle install\' command success' do
-      subject.stub!(:bundle_need_refresh?).and_return(true)
-      subject.stub!(:system).and_return(true)
+      subject.stub(:bundle_need_refresh?).and_return(true)
+      subject.stub(:system).and_return(true)
       Guard::Bundler::Notifier.should_receive(:notify).with(true, anything())
       subject.send(:refresh_bundle)
     end
 
     it 'should call notifier after `bundle install\' command fail' do
-      subject.stub!(:bundle_need_refresh?).and_return(true)
-      subject.stub!(:system).and_return(false)
+      subject.stub(:bundle_need_refresh?).and_return(true)
+      subject.stub(:system).and_return(false)
       Guard::Bundler::Notifier.should_receive(:notify).with(false, anything())
       subject.send(:refresh_bundle)
     end
 
     it 'should call notifier if bundle do not need refresh' do
-      subject.stub!(:bundle_need_refresh?).and_return(false)
+      subject.stub(:bundle_need_refresh?).and_return(false)
       Guard::Bundler::Notifier.should_receive(:notify).with('up-to-date', anything())
       subject.send(:refresh_bundle)
     end
