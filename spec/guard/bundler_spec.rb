@@ -4,11 +4,11 @@ require 'spec_helper'
 describe Guard::Bundler do
   subject { described_class.new }
 
-  context '#bundle_need_refresh?' do
+  context '#bundle_check' do
 
-    it 'should call `bundle check\' command and retrun false' do
-      subject.should_receive(:`).with('bundle check')
-      subject.send(:bundle_need_refresh?)
+    it 'should call `bundle check\' command' do
+      subject.should_receive(:'`').with('bundle check')
+      subject.send(:bundle_check)
     end
 
     context 'arbitrary cli switches' do
@@ -26,42 +26,51 @@ describe Guard::Bundler do
 
   end
 
+  context '#bundle_install' do
+
+    it 'should call `bundle install\' command' do
+      subject.should_receive(:system).with('bundle install')
+      subject.send(:bundle_install)
+    end
+
+  end
+
   context '#refresh_bundle' do
 
-    it 'should call `bundle install\' command if need refresh' do
-      subject.should_receive(:bundle_need_refresh?).and_return(true)
-      subject.should_receive(:system).with('bundle install').and_return(true)
+    it 'should call #bundle_install if #bundle_check fails' do
+      subject.should_receive(:bundle_check).and_return(false)
+      subject.should_receive(:bundle_install).and_return(:bundle_installed)
       subject.send(:refresh_bundle).should be_true
     end
 
-    it 'should not call `bundle install\' command if dont need refresh' do
-      subject.should_receive(:bundle_need_refresh?).and_return(false)
-      subject.should_not_receive(:system).with('bundle install')
+    it 'should not call #bundle_install if #bundle_check succeeds' do
+      subject.should_receive(:bundle_check).and_return(:bundle_already_up_to_date)
+      subject.should_not_receive(:bundle_install)
       subject.send(:refresh_bundle).should be_true
     end
 
-    it 'should return false if `bundle install\' command fail' do
-      subject.should_receive(:bundle_need_refresh?).and_return(true)
-      subject.should_receive(:system).with('bundle install').and_return(false)
+    it 'should return false if #bundle_install fails' do
+      subject.should_receive(:bundle_check).and_return(false)
+      subject.should_receive(:bundle_install).and_return(false)
       subject.send(:refresh_bundle).should be_false
     end
 
-    it 'should call notifier after `bundle install\' command success' do
-      subject.stub!(:bundle_need_refresh?).and_return(true)
-      subject.stub!(:system).and_return(true)
+    it 'should call notifier after #bundle_install succeeds' do
+      subject.stub(:bundle_check).and_return(false)
+      subject.should_receive(:bundle_install).and_return(:bundle_installed)
       Guard::Bundler::Notifier.should_receive(:notify).with(true, anything())
       subject.send(:refresh_bundle)
     end
 
-    it 'should call notifier after `bundle install\' command fail' do
-      subject.stub!(:bundle_need_refresh?).and_return(true)
-      subject.stub!(:system).and_return(false)
+    it 'should call notifier after #bundle_install fails' do
+      subject.stub(:bundle_check).and_return(false)
+      subject.should_receive(:bundle_install).and_return(false)
       Guard::Bundler::Notifier.should_receive(:notify).with(false, anything())
       subject.send(:refresh_bundle)
     end
 
-    it 'should call notifier if bundle do not need refresh' do
-      subject.stub!(:bundle_need_refresh?).and_return(false)
+    it 'should call notifier if #bundle_check succeeds' do
+      subject.stub(:bundle_check).and_return(:bundle_installed_using_local_gems)
       Guard::Bundler::Notifier.should_receive(:notify).with('up-to-date', anything())
       subject.send(:refresh_bundle)
     end
