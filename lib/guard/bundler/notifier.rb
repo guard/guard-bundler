@@ -7,6 +7,8 @@ module Guard
         case result
         when 'up-to-date'
           "Bundle already up-to-date"
+        when 'bundle_check_install'
+          "Bundle installed using local gems"
         when true
           "Bundle has been installed\nin %.1f seconds." % [duration]
         else
