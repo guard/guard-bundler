@@ -1,4 +1,5 @@
 # Guard::Bundler
+[![Gem Version](https://badge.fury.io/rb/guard-bundler.png)](http://badge.fury.io/rb/guard-bundler) [![Build Status](https://travis-ci.org/guard/guard-bundler.png?branch=master)](https://travis-ci.org/guard/guard-bundler) [![Dependency Status](https://gemnasium.com/guard/guard-bundler.png)](https://gemnasium.com/guard/guard-bundler) [![Code Climate](https://codeclimate.com/github/guard/guard-bundler.png)](https://codeclimate.com/github/guard/guard-bundler) [![Coverage Status](https://coveralls.io/repos/guard/guard-bundler/badge.png?branch=master)](https://coveralls.io/r/guard/guard-bundler)
 
 Bundler guard allows to automatically & intelligently install/update bundle when needed.
 
