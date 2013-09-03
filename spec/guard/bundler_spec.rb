@@ -71,7 +71,7 @@ describe Guard::Bundler do
 
     it 'should call notifier if #bundle_check succeeds' do
       subject.stub(:bundle_check).and_return(:bundle_installed_using_local_gems)
-      Guard::Bundler::Notifier.should_receive(:notify).with('up-to-date', anything())
+      Guard::Bundler::Notifier.should_not_receive(:notify).with('up-to-date', anything())
       subject.send(:refresh_bundle)
     end
 
