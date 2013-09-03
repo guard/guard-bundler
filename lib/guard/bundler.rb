@@ -44,7 +44,6 @@ module Guard
         @result
       else
         UI.info 'Bundle already up-to-date', :reset => true
-        Notifier.notify('up-to-date', nil)
         true
       end
     end
