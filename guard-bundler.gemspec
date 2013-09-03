@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.name        = 'guard-bundler'
   s.version     = Guard::BundlerVersion::VERSION
   s.platform    = Gem::Platform::RUBY
+  s.license     = 'MIT'
   s.authors     = ['Yann Lugrin']
   s.email       = ['yann.lugrin@sans-savoir.net']
   s.homepage    = 'http://rubygems.org/gems/guard-bundler'
@@ -18,12 +19,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'guard',   '~> 1.1'
   s.add_dependency 'bundler', '~> 1.0'
 
-  s.add_development_dependency 'rspec',       '~> 2.6'
-  s.add_development_dependency 'guard-rspec', '~> 1.0'
+  s.add_development_dependency 'rspec', '>= 2.14.1'
 
   s.files        = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]
   s.require_path = 'lib'
-
-  s.rdoc_options = ["--charset=UTF-8", "--main=README.md", "--exclude='(lib|test|spec)|(Gem|Guard|Rake)file'"]
 end
 
