@@ -1,10 +1,10 @@
 # encoding: utf-8
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 require 'bundler'
 
 module Guard
-  class Bundler < Guard
+  class Bundler < Plugin
     autoload :Notifier, 'guard/bundler/notifier'
 
     def start
