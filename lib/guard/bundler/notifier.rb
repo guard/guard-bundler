@@ -29,7 +29,7 @@ module Guard
         message = guard_message(result, duration)
         image   = guard_image(result)
 
-        ::Guard::Notifier.notify(message, :title => 'bundle install', :image => image)
+        ::Guard::Notifier.notify(message, title: 'bundle install', image: image)
       end
 
     end

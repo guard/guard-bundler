@@ -58,6 +58,10 @@ Please read [Guard doc](https://github.com/guard/guard#readme) for more informat
 Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
 you make.
 
-## Authors
+## Author
 
 [Yann Lugrin](https://github.com/yannlugrin)
+
+## Contributors
+
+[https://github.com/guard/guard-bundler/graphs/contributors](https://github.com/guard/guard-bundler/graphs/contributors)

@@ -25,8 +25,8 @@ describe Guard::Bundler::Notifier do
   it 'should call Guard::Notifier' do
     ::Guard::Notifier.should_receive(:notify).with(
       "Bundle has been installed\nin 10.1 seconds.",
-      :title => 'bundle install',
-      :image => :success
+      title: 'bundle install',
+      image: :success
     )
     subject.notify(true, 10.1)
   end
