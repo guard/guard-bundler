@@ -18,7 +18,7 @@ describe Guard::Bundler do
       end
 
       it 'should be set to true' do
-        subject = Guard::Bundler.new([], {:cli => '--binstubs'})
+        subject = Guard::Bundler.new(cli: '--binstubs')
         subject.options[:cli].should be_true
       end
 

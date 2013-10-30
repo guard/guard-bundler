@@ -1,10 +1,11 @@
 # Guard::Bundler
+
 [![Gem Version](https://badge.fury.io/rb/guard-bundler.png)](http://badge.fury.io/rb/guard-bundler) [![Build Status](https://travis-ci.org/guard/guard-bundler.png?branch=master)](https://travis-ci.org/guard/guard-bundler) [![Dependency Status](https://gemnasium.com/guard/guard-bundler.png)](https://gemnasium.com/guard/guard-bundler) [![Code Climate](https://codeclimate.com/github/guard/guard-bundler.png)](https://codeclimate.com/github/guard/guard-bundler) [![Coverage Status](https://coveralls.io/repos/guard/guard-bundler/badge.png?branch=master)](https://coveralls.io/r/guard/guard-bundler)
 
 Bundler guard allows to automatically & intelligently install/update bundle when needed.
 
 * Compatible with Bundler 1.0.x
-* Tested against Ruby 1.8.7, 1.9.2, 1.9.3, REE and the latest versions of Rubinius.
+* Tested against Ruby 1.9.3, 2.0.0, Rubinius & JRuby (1.9 mode only).
 
 ## Install
 
@@ -12,13 +13,13 @@ Please be sure to have [Guard](https://github.com/guard/guard) installed before 
 
 Install the gem:
 
-```
+```bash
 $ gem install guard-bundler
 ```
 
-Add it to your Gemfile (inside development group):
+Add it to your `Gemfile`:
 
-``` ruby
+```ruby
 group :development do
   gem 'guard-bundler'
 end
@@ -26,7 +27,7 @@ end
 
 Add guard definition to your Guardfile by running this command:
 
-```
+```bash
 $ guard init bundler
 ```
 
@@ -41,7 +42,7 @@ Bundler guard can be really adapted to all kind of projects.
 ### Standard RubyGem project
 
 ```ruby
-guard 'bundler' do
+guard :bundler do
   watch('Gemfile')
   # Uncomment next line if Gemfile contain `gemspec' command
   # watch(/^.+\.gemspec/)
@@ -58,6 +59,10 @@ Please read [Guard doc](https://github.com/guard/guard#readme) for more informat
 Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
 you make.
 
-## Authors
+## Author
 
 [Yann Lugrin](https://github.com/yannlugrin)
+
+## Contributors
+
+[https://github.com/guard/guard-bundler/graphs/contributors](https://github.com/guard/guard-bundler/graphs/contributors)
