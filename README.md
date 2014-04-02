@@ -5,7 +5,7 @@
 Bundler guard allows to automatically & intelligently install/update bundle when needed.
 
 * Compatible with Bundler 1.0.x
-* Tested against Ruby 1.9.3, 2.0.0, Rubinius & JRuby (1.9 mode only).
+* Tested against Ruby 1.9.3, 2.0.0, 2.1.0, JRuby & Rubinius.
 
 ## Install
 
