@@ -13,7 +13,7 @@ Add the gem to your `Gemfile`:
 
 ```ruby
 group :development do
-  gem 'guard-bundler'
+  gem 'guard-bundler', require: false
 end
 ```
 
