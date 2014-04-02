@@ -9,15 +9,7 @@ Bundler guard allows to automatically & intelligently install/update bundle when
 
 ## Install
 
-Please be sure to have [Guard](https://github.com/guard/guard) installed before continue.
-
-Install the gem:
-
-```bash
-$ gem install guard-bundler
-```
-
-Add it to your `Gemfile`:
+Add the gem to your `Gemfile`:
 
 ```ruby
 group :development do
@@ -25,7 +17,7 @@ group :development do
 end
 ```
 
-Add guard definition to your Guardfile by running this command:
+Add the plugin definition to your Guardfile by running this command:
 
 ```bash
 $ guard init bundler
@@ -33,11 +25,11 @@ $ guard init bundler
 
 ## Usage
 
-Please read [Guard usage doc](https://github.com/guard/guard#readme)
+Please read the [Guard usage doc](https://github.com/guard/guard#readme)
 
 ## Guardfile
 
-Bundler guard can be really adapted to all kind of projects.
+Guard::Bundler plugin can be really adapted to all kind of projects.
 
 ### Standard RubyGem project
 
@@ -49,19 +41,29 @@ guard :bundler do
 end
 ```
 
-Please read [Guard doc](https://github.com/guard/guard#readme) for more information about the Guardfile DSL.
+Please read the [Guard usage doc](https://github.com/guard/guard#readme) for more information about the Guardfile DSL.
 
 ## Development
 
-* Source hosted at [GitHub](https://github.com/guard/guard-bundler)
-* Report issues/Questions/Feature requests on [GitHub Issues](https://github.com/guard/guard-bundler/issues)
+* Documentation hosted at [RubyDoc](http://rubydoc.info/github/guard/guard-bundler/master/frames).
+* Source hosted at [GitHub](https://github.com/guard/guard-bundler).
 
-Pull requests are very welcome! Make sure your patches are well tested. Please create a topic branch for every separate change
-you make.
+Pull requests are very welcome! Please try to follow these simple rules if applicable:
+
+* Please create a topic branch for every separate change you make.
+* Update the [README](https://github.com/guard/guard-bundler/blob/master/README.md).
+* Please **do not change** the version number.
+
+For questions please join us in our [Google group](http://groups.google.com/group/guard-dev) or on
+`#guard` (irc.freenode.net).
 
 ## Author
 
 [Yann Lugrin](https://github.com/yannlugrin)
+
+## Maintainer
+
+[Rémy Coutable](https://github.com/rymai) ([@rymai](https://twitter.com/rymai))
 
 ## Contributors
 
