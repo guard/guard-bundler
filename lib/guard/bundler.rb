@@ -1,7 +1,7 @@
 # encoding: utf-8
-require 'guard'
-require 'guard/plugin'
 require 'bundler'
+
+require "guard/compat/plugin"
 
 module Guard
   class Bundler < Plugin
