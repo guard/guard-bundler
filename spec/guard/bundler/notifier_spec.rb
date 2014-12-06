@@ -1,7 +1,6 @@
-# encoding: utf-8
-require 'spec_helper'
+require "guard/bundler/notifier"
 
-describe Guard::Bundler::Notifier do
+RSpec.describe Guard::Bundler::Notifier do
   subject { Guard::Bundler::Notifier }
 
   it 'should format success message' do

@@ -1,7 +1,8 @@
 # encoding: utf-8
-require 'spec_helper'
 
-describe Guard::Bundler do
+require "guard/bundler"
+
+RSpec.describe Guard::Bundler do
   subject { described_class.new }
 
   context '#bundle_check' do
