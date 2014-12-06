@@ -1,6 +1,6 @@
 # encoding: utf-8
 module Guard
-  class Bundler
+  class Bundler < Plugin
     class Notifier
 
       def self.guard_message(result, duration)
