@@ -36,6 +36,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     allow(Guard::Notifier).to receive(:notify)
+    allow(Guard::UI).to receive(:info)
     @fixture_path = Pathname.new(File.expand_path('../fixtures/', __FILE__))
   end
 end
