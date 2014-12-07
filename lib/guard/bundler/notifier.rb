@@ -18,18 +18,14 @@ module Guard
 
       # failed | success
       def self.guard_image(result)
-        icon = if result
-          :success
-        else
-          :failed
-        end
+        result ?  :success : :failed
       end
 
       def self.notify(result, duration)
         message = guard_message(result, duration)
         image   = guard_image(result)
 
-        ::Guard::Notifier.notify(message, title: 'bundle install', image: image)
+        Guard::Compat::UI.notify(message, title: 'bundle install', image: image)
       end
 
     end

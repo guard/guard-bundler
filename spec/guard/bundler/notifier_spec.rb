@@ -22,7 +22,7 @@ RSpec.describe Guard::Bundler::Notifier do
   end
 
   it 'should call Guard::Notifier' do
-    expect(::Guard::Notifier).to receive(:notify).with(
+    expect(Guard::Compat::UI).to receive(:notify).with(
       "Bundle has been installed\nin 10.1 seconds.",
       title: 'bundle install',
       image: :success
