@@ -39,15 +39,15 @@ module Guard
       duration = Time.now - start_at
       case result
       when :bundle_already_up_to_date
-        ::Guard::UI.info 'Bundle already up-to-date', reset: true
+        Guard::Compat::UI.info 'Bundle already up-to-date', reset: true
       when :bundle_installed_using_local_gems
-        ::Guard::UI.info 'Bundle installed using local gems', reset: true
+        Guard::Compat::UI.info 'Bundle installed using local gems', reset: true
         Notifier.notify 'bundle_check_install', nil
       when :bundle_installed
-        ::Guard::UI.info 'Bundle installed', reset: true
+        Guard::Compat::UI.info 'Bundle installed', reset: true
         Notifier.notify true, duration
       else
-        ::Guard::UI.info "Bundle can't be installed -- Please check manually", reset: true
+        Guard::Compat::UI.info "Bundle can't be installed -- Please check manually", reset: true
         Notifier.notify false, nil
       end
       result
@@ -67,7 +67,7 @@ module Guard
     end
 
     def bundle_install
-      ::Guard::UI.info 'Bundling...', reset: true
+      Guard::Compat::UI.info 'Bundling...', reset: true
       ::Bundler.with_clean_env do
         system("bundle install#{" #{options[:cli]}" if options[:cli]}")
       end
