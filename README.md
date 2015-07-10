@@ -31,15 +31,7 @@ Please read the [Guard usage doc](https://github.com/guard/guard#readme)
 
 Guard::Bundler plugin can be really adapted to all kind of projects.
 
-### Standard RubyGem project
-
-```ruby
-guard :bundler do
-  watch('Gemfile')
-  # Uncomment next line if Gemfile contain `gemspec' command
-  # watch(/^.+\.gemspec/)
-end
-```
+You can tweak the default Guardfile template (created by `guard init bundler`) if you need to watch files other than the Gemfile or *.gemspec (or if they are in different paths).
 
 Please read the [Guard usage doc](https://github.com/guard/guard#readme) for more information about the Guardfile DSL.
 
