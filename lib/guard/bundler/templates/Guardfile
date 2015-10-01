@@ -3,7 +3,7 @@ guard :bundler do
   require 'guard/bundler/verify'
   helper = Guard::Bundler::Verify.new
 
-  files = ['Gemfile']
+  files = ['Gemfile', 'Gemfile.lock']
   files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
 
   # Assume files are symlinked from somewhere
