@@ -12,3 +12,4 @@ matrix:
 branches:
   only:
     - master
+sudo: false
