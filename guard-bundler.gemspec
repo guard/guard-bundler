@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Guard gem for Bundler'
   s.description = 'Guard::Bundler automatically install/update your gem bundle when needed'
 
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = '>= 2.4.9'
 
   s.add_dependency 'guard',   '~> 2.2'
   s.add_dependency 'guard-compat', '~> 1.1'
