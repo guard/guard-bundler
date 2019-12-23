@@ -55,7 +55,7 @@ module Guard
 
     def bundle_check
       gemfile_lock_mtime = File.exists?('Gemfile.lock') ? File.mtime('Gemfile.lock') : nil
-      ::Bundler.with_clean_env do
+      ::Bundler.with_unbundled_env do
         `bundle check`
       end
       return false unless $? == 0
@@ -68,7 +68,7 @@ module Guard
 
     def bundle_install
       Guard::Compat::UI.info 'Bundling...', reset: true
-      ::Bundler.with_clean_env do
+      ::Bundler.with_unbundled_env do
         system("bundle install#{" #{options[:cli]}" if options[:cli]}")
       end
       $? == 0 ? :bundle_installed : false
