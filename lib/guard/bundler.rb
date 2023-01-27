@@ -54,7 +54,7 @@ module Guard
     end
 
     def bundle_check
-      gemfile_lock_mtime = File.exists?('Gemfile.lock') ? File.mtime('Gemfile.lock') : nil
+      gemfile_lock_mtime = File.exist?('Gemfile.lock') ? File.mtime('Gemfile.lock') : nil
       ::Bundler.with_unbundled_env do
         `bundle check`
       end
