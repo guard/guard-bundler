@@ -5,7 +5,7 @@
 Bundler guard allows to automatically & intelligently install/update bundle when needed.
 
 * Compatible with Bundler 2.1.x
-* Tested against the latest Ruby 2.4.x, 2.5.x, 2.6.x, JRuby & Rubinius. See [`.travis-ci.yml`](https://github.com/guard/guard-bundler/blob/master/.travis.yml) for the exact versions.
+* Tested against the latest Ruby 2.7.x, 3.0.x, 3.1.x & 3.2.x. See [`.travis-ci.yml`](https://github.com/guard/guard-bundler/blob/master/.travis.yml) for the exact versions.
 
 ## Install
 
