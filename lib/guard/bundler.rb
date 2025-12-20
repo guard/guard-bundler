@@ -66,12 +66,12 @@ module Guard
     end
 
     def bundle_check
-      gemfile_lock_mtime = File.exist?('Gemfile.lock') ? File.mtime('Gemfile.lock') : nil
+      gemfile_lock_mtime = File.exist?(lockfile_path) ? File.mtime(lockfile_path) : nil
       ::Bundler.with_unbundled_env do
         `bundle check`
       end
       return false unless $? == 0
-      if gemfile_lock_mtime && gemfile_lock_mtime == File.mtime('Gemfile.lock')
+      if gemfile_lock_mtime && gemfile_lock_mtime == File.mtime(lockfile_path)
         :bundle_already_up_to_date
       else
         :bundle_installed_using_local_gems
