@@ -123,4 +123,18 @@ RSpec.describe Guard::Bundler do
 
   end
 
+  context '#lockfile_path' do
+
+    it 'should return default lockfile path' do
+      expect(subject.send(:lockfile_path)).to end_with('Gemfile.lock')
+    end
+
+    it 'should return custom lockfile path' do
+      allow(Bundler::SharedHelpers).to receive(:default_lockfile).and_return('custom.lock')
+      subject = Guard::Bundler.new
+      expect(subject.send(:lockfile_path)).to end_with('custom.lock')
+    end
+
+  end
+
 end
